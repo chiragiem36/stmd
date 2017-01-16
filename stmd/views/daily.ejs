@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>Admin</title>
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+		<style type="text/css" rel="stylesheet">
+			*{
+				font-family: monospace;
+			}
+			
+			.machine_name {
+				background-color: rgba(124,241,131,.7);
+			}
+			
+			td {
+				background-color: rgba(124,241,131,.3)
+			}
+			
+		</style>
+	</head>
+	<body>
+			<div class="container-fluid">
+					<table class="table table-striped text-center">
+							<tr style="background-color:rgba(153,234,232,.8)">
+									<th class="text-center">Machine Names</th>
+									<th class="text-center">Working Section</th>
+									<th class="text-center">Starting Time</th>
+									<th class="text-center">Ending Time</th>
+									<th class="text-center">From - To( Pole )</th>
+									<th class="text-center">From - To</th>
+									<th class="text-center">Length(in KM)</th>
+									<th class="text-center">Failure</th>
+									<th class="text-center">Remark</th>
+							</tr>
+							
+							<% machines.forEach(function(machine){ %>
+								<tr>
+								<td class="machine_name">
+									<b style="color:red"><%= machine.machine_name %><b>
+								</td>
+								<td>
+									<%= machine.section_starting %>-<%= machine.section_ending %>
+								</td>
+								<td>
+									<%= machine.starting_hour %>:<%= machine.starting_minute %>
+								</td>
+								<td>
+									<%= machine.ending_hour %>:<%= machine.ending_minute %>
+								</td>
+								<td>
+									<%= machine.from_pole %>-<%= machine.to_pole %>
+								</td>
+								<td>
+									<%= machine.from %>-<%= machine.from %>
+								</td>
+								<td> <%= machine.length %> </td>
+								<td> <%= machine.failure %> </td>
+								<td> <%= machine.remark %> </td>
+							</tr>
+							<% }) %>
+							
+					</table>
+				
+			</div>
+	</body>
+</html>

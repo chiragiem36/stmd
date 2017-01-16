@@ -1,0 +1,1 @@
+{"date":"13","line":"DOWN","section_starting":"bpl","section_ending":"bina","starting_hour":"3","starting_minute":"14","ending_hour":"15","ending_minute":"15","from_pole":"861/11","to_pole":"861/100","from":"861/12","to":"861/20","length":"1","failure":"no","remark":"No failure","submit_time":"2017-01-15T10:53:15.520Z","month_name":"JANUARY","machine_name":"csm924"}

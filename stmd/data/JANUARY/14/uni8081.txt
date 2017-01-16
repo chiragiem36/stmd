@@ -1,0 +1,1 @@
+{"date":"14","section_starting":"bpl","section_ending":"bina","starting_hour":"6","starting_minute":"24","ending_hour":"23","ending_minute":"10","from_pole":"221","to_pole":"2121","from":"861/12","to":"861/20","length":"1","failure":"no","remark":"No failure","submit_time":"2017-01-14T08:22:13.362Z","month_name":"JANUARY","machine_name":"uni8081"}

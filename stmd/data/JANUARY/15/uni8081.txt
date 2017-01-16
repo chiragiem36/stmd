@@ -1,0 +1,1 @@
+{"date":"15","section_starting":"bpl","section_ending":"bina","starting_hour":"7","starting_minute":"8","ending_hour":"14","ending_minute":"5","from_pole":"221","to_pole":"861/100","from":"861/12","to":"861/20","length":"1","failure":"yes","remark":"Toot gayi machine","submit_time":"2017-01-14T18:38:06.794Z","month_name":"JANUARY","machine_name":"uni8081"}
