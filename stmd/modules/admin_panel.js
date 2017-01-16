@@ -13,32 +13,25 @@ var day = d.getDay()
 
 
 exports.daily = function(req,res){
-		var machine_object1
-		var data_object = {
-			machines:[]
-			}
-		fs.stat(join('data',month,date.toString()),function(err,stats){
-			if(err){
-				res.render('server_issue',{message: "Data Not Found for Today", req_image:"images/server_error.gif"})
-			} else {
-				var files = fs.readdirSync(join('data',month,date.toString()))
-				for(var i=0; i<files.length;i++){
-					var data = fs.readFileSync(join('data',month,date.toString(),files[i]))
-					var obj = JSON.parse(data)
-					data_object.machines.push(obj)
-					}	
+			var machine_object1
+			var data_object = {
+	machines:[]
+}
+			fs.stat(join('data',month,date.toString()),function(err,stats){
+				if(err){
+					res.render('server_issue',{message: "Data Not Found for Today", req_image:"images/server_error.gif"})
+				} else {
+					var files = fs.readdirSync(join('data',month,date.toString()))
+					for(var i=0; i<files.length;i++){
+							var data = fs.readFileSync(join('data',month,date.toString(),files[i]))
+							var obj = JSON.parse(data)
+							data_object.machines.push(obj)
+						}	
 					
-<<<<<<< HEAD:stmd/modules/admin_panel.js
 					}
 					console.log(data_object)
 				rendering_daily_data(data_object,res)
 			})
-=======
-				}
-			console.log(data_object)
-			rendering_data(data_object,res)
-		})
->>>>>>> e3bd054916375b4ce66041d1057ed9dd7c8208f5:stmd/node_modules/admin_panel.js
 }
 
 

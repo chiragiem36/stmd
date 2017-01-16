@@ -13,8 +13,6 @@ var posting_machine_data = require('./modules/machine_data').posting_machine_dat
 var writing_machine_data = require('./modules/machine_data').writing_machine_data
 
 var daily_data = require('./modules/admin_panel').daily
-var weekly_data = require('./modules/admin_panel').weekly
-var monthly_data = require('./modules/admin_panel').monthly
 
 var date = new Date()
 var Hours = date.getHours()
