@@ -57,7 +57,9 @@ function month_directory_exist(machine_name,req,res){
 										date_directory_exist(machine_name,req.body,res)
 									}
 							})
-						}
+						}else {
+							console.log("Internal server Error")
+						internal_server_error(res) }
 					} else{
 						date_directory_exist(machine_name,req,res)
 					}
@@ -66,7 +68,9 @@ function month_directory_exist(machine_name,req,res){
 
 function date_directory_exist(machine_name,req,res){
 				console.log(req.body)
-				fs.createWriteStream(join("data",month,date.toString(),machine_name + ".txt")).write(JSON.stringify(req.body))
+				fs.writeFile(join("data",month,date.toString(),machine_name + ".txt"),JSON.stringify(req.body),function(err){
+					if(err) throw err
+				})
 				res.render('server_issue',{ message: "You will be redirected back to HOME in 5 seconds", req_image: "images/done.png"})
 }
 

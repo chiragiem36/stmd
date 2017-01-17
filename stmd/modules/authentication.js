@@ -22,7 +22,7 @@ exports.authenticating = function (req,res,next){
 			if(user_name.length>0 && pass_word.length>0){
 				if( index >=0 ){
 					if(machine_password[index] == pass_word){
-						if( Hours<15){
+						if( Hours<19){
 							next()
 						}else {
 							res.render('server_issue',{message:"Timed Out",req_image:"images/late.jpg"})}
