@@ -36,7 +36,10 @@ exports.daily = function(req,res){
 }
 
 exports.edit = function(req,res){
-
+	var data = fs.readFileSync(join('data',month,date.toString(),req.params.machine_name + '.txt'))
+	var obj = JSON.parse(data)
+	console.log(obj)
+	res.render('edit',{ machine_data: obj})
 }
 
 
