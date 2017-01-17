@@ -25,6 +25,7 @@ exports.daily = function(req,res){
 					for(var i=0; i<files.length;i++){
 							var data = fs.readFileSync(join('data',month,date.toString(),files[i]))
 							var obj = JSON.parse(data)
+							console.log(obj)
 							data_object.machines.push(obj)
 						}	
 					
@@ -32,6 +33,10 @@ exports.daily = function(req,res){
 					console.log(data_object)
 				rendering_daily_data(data_object,res)
 			})
+}
+
+exports.edit = function(req,res){
+
 }
 
 

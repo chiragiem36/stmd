@@ -15,6 +15,14 @@
 				background-color: rgba(124,241,131,.3)
 			}
 			
+			input {
+					background-color: rgb(40,204,154);
+					border-radius: 2.5px;
+					border-width: 1px;
+					border-color: white;
+					margin-right: 10px;
+						}
+			
 		</style>
 	</head>
 	<body>
@@ -35,7 +43,10 @@
 							<% machines.forEach(function(machine){ %>
 								<tr>
 								<td class="machine_name">
-									<b style="color:red"><%= machine.machine_name %><b>
+									<form action="/edit/<%= machine.machine_name %>" method ="post">
+										<input type="submit" value=<%= machine.machine_name %> >
+									</form>
+									
 								</td>
 								<td>
 									<%= machine.section_starting %>-<%= machine.section_ending %>

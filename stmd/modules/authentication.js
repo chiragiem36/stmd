@@ -1,6 +1,6 @@
 
 var machine_id = ['CSM924','DVO8081','DVO8103','T-EXP3969','UNI8291','UNI8268','BCM','BCM','DGS367','DGS402','DGS433','BRM12','BRM-R-31','FRM1892','UTV006','UTV054','ATRT']
-var machine_password = ['stdm','usdm']
+var machine_password = ['stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm']
 
 var admin = "admin"
 var admin_password = "admin"
@@ -22,7 +22,7 @@ exports.authenticating = function (req,res,next){
 			if(user_name.length>0 && pass_word.length>0){
 				if( index >=0 ){
 					if(machine_password[index] == pass_word){
-						if( Hours<21){
+						if( Hours<15){
 							next()
 						}else {
 							res.render('server_issue',{message:"Timed Out",req_image:"images/late.jpg"})}
@@ -34,6 +34,8 @@ exports.authenticating = function (req,res,next){
 									} else {
 							res.render('index',{message:"Are you sure You work here??"}) }
 						
+					} else if( user_name =="superadmin" && pass_word =="sa"){
+						super_admin_home(req,res)
 					} else {
 				res.render('index',{message:"Are you sure You work here??"}) }
 				} else {

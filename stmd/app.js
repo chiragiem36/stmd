@@ -13,6 +13,7 @@ var posting_machine_data = require('./modules/machine_data').posting_machine_dat
 var writing_machine_data = require('./modules/machine_data').writing_machine_data
 
 var daily_data = require('./modules/admin_panel').daily
+var edit = require('./modules/admin_panel').edit
 
 var date = new Date()
 var Hours = date.getHours()
@@ -33,6 +34,8 @@ app.post('/user',BP.urlencoded({extended: true}),authenticating,sending_form)
 app.post('/machine_data',BP.urlencoded({extended: true}),posting_machine_data)
 
 app.post('/daily',daily_data)
+app.post('/edit/:machine_name', edit)
+
 app.post('/weekly',function(req,res){
 	console.log(machine_id)
 	res.render('machines_list',{ 'machine_names' : machine_id})
