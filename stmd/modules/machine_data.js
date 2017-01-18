@@ -27,7 +27,7 @@ exports.posting_machine_data = function (req,res,next){
 										internal_server_error(res)
 									} else {
 										console.log("New Month Directory Created: ", month)
-										month_directory_exist(machine_name,req.body,res)
+										month_directory_exist(machine_name,req,res)
 									}
 								})
 						} else {
@@ -54,7 +54,7 @@ function month_directory_exist(machine_name,req,res){
 										internal_server_error(res)
 									} else {
 										console.log("New Date Directory Created: ", date)
-										date_directory_exist(machine_name,req.body,res)
+										date_directory_exist(machine_name,req,res)
 									}
 							})
 						}else {
@@ -67,8 +67,7 @@ function month_directory_exist(machine_name,req,res){
 }
 
 function date_directory_exist(machine_name,req,res){
-				console.log(req.body)
-				fs.writeFile(join("data",month,date.toString(),machine_name + ".txt"),JSON.stringify(req.body),function(err){
+				fs.writeFile(join("data",month,date.toString(),machine_name + '.txt'),JSON.stringify(req.body),function(err){
 					if(err) throw err
 				})
 				res.render('server_issue',{ message: "You will be redirected back to HOME in 5 seconds", req_image: "images/done.png"})

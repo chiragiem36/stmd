@@ -27,7 +27,8 @@ app.get('/',function(req,res){
 	res.render('index',{message:" "})
 })
 
-app.use(express.static('public_html'))
+app.use(express.static('public'))
+app.use('/edit',express.static('public'))
 
 app.post('/user',BP.urlencoded({extended: true}),authenticating,sending_form)
 

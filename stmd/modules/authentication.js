@@ -22,13 +22,13 @@ exports.authenticating = function (req,res,next){
 			if(user_name.length>0 && pass_word.length>0){
 				if( index >=0 ){
 					if(machine_password[index] == pass_word){
-						if( Hours<19){
+						if( Hours<23){
 							next()
 						}else {
 							res.render('server_issue',{message:"Timed Out",req_image:"images/late.jpg"})}
 						} else { 
 							res.render('index',{message:"invalid username or password"}) } 
-							} else if( index<0 && user_name == admin ){
+							} else if( index<0 && user_name == 'admin' ){
 								if( pass_word == admin_password){
 									admin_home(req,res)
 									} else {
