@@ -39,6 +39,10 @@
 							margin-right: 10px;
 						}
 						
+						#hidden {
+							display: none;
+						}
+						
 				</style>
 							
 				<script type="text/javascript">
@@ -46,18 +50,24 @@
 							var date = document.getElementById("date");
 							
 							for(var i=1; i<32; i++){
-								date.innerHTML += "<option>"+ i + "</option>";
+								date.innerHTML += "<option" + " id=dt"+ i + ">"+ i + "</option>";
 							}
 							
 							for(var x=0; x<24; x++){
-								document.getElementById("hour1").innerHTML += "<option>"+ x + "</option>";
-								document.getElementById("hour2").innerHTML += "<option>"+ x + "</option>";
+								document.getElementById("hour1").innerHTML += "<option" + " id=h1_"+ x + ">"+ x + "</option>";
+								document.getElementById("hour2").innerHTML += "<option" + " id=h2_"+ x + ">"+ x + "</option>";
 							}
 							
 							for(var y=0; y<60; y++){
-								document.getElementById("minute1").innerHTML += "<option>"+ y + "</option>";
-								document.getElementById("minute2").innerHTML += "<option>"+ y + "</option>";
+								document.getElementById("minute1").innerHTML += "<option" + " id=m1_"+ y + ">"+ y + "</option>";
+								document.getElementById("minute2").innerHTML += "<option" + " id=m2_"+ y + ">"+ y + "</option>";
 							}
+							
+							document.getElementById("dt" + <%=machine_data.date%>).setAttribute('selected','selected');
+							document.getElementById("h1_" + <%=machine_data.starting_hour%>).setAttribute('selected','selected');
+							document.getElementById("h2_" + <%=machine_data.ending_hour%>).setAttribute('selected','selected');
+							document.getElementById("m1_" + <%=machine_data.starting_minute%>).setAttribute('selected','selected');
+							document.getElementById("m2_" + <%=machine_data.ending_minute%>).setAttribute('selected','selected');
 							
 						}
 						
@@ -69,7 +79,7 @@
 				</div>
 				
 				<form action="/machine_data" method="POST" class="container text-center" id="form">
-						
+						<input name="machine_name" value="<%= machine_data.machine_name%>" id="hidden">
 						<div class="row">
 							<div class="col-xs-12 col-md-3 col-md-offset-2 text-center">
 									<kbd>Date</kbd> 
@@ -156,7 +166,7 @@
 						</div>
 							<br>
 							<div class="row">
-											<input type="submit" value="submit" id="submit" class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
+											<input type="submit" value="Forward" id="submit" class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
 							</div>
 				</form>
 		</body>

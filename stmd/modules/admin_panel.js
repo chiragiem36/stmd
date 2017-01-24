@@ -11,6 +11,8 @@ var Minutes = d.getMinutes()
 var month = months[d.getMonth()].toUpperCase()
 var day = d.getDay()
 
+var exces;
+
 
 exports.daily = function(req,res){
 			var machine_object1
@@ -35,11 +37,16 @@ exports.daily = function(req,res){
 			})
 }
 
-exports.edit = function(req,res){
+exports.edit_page = function(req,res){
 	var data = fs.readFileSync(join('data',month,date.toString(),req.params.machine_name + '.txt'))
 	var obj = JSON.parse(data)
 	console.log(obj)
 	res.render('edit',{ machine_data: obj})
+}
+
+exports.forward_to_superadmin = function(req,res){
+	fs.createWriteStream(join("data",month,date.toString(),'super_admin.txt')).write("true")
+	res.render('server_issue',{ message: "You will be redirected back to HOME in 5 seconds", req_image: "images/done.png"})
 }
 
 

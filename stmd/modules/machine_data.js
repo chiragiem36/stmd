@@ -11,12 +11,16 @@ var month = months[d.getMonth()].toUpperCase()
 
 exports.posting_machine_data = function (req,res,next){
 		req.body.submit_time = d
-		var machine_name = name(5).toLowerCase()
-		
-		req.body.month_name = month
-		req.body.machine_name = machine_name
+		var the_name = name(5).toLowerCase()
+		console.log(req.body.machine_name)
 		console.log(req.body)
-		
+		req.body.month_name = month
+		if(req.body.machine_name == undefined || req.body.machine_name == null || req.body.machine_name == ""){
+			req.body.machine_name = the_name
+		} else {
+			
+		}
+		console.log(req.body.machine_name)
 				fs.stat(join("data",month),function(err,stats){
 					if(err){
 						if(err.code=="ENOENT"){
@@ -27,7 +31,7 @@ exports.posting_machine_data = function (req,res,next){
 										internal_server_error(res)
 									} else {
 										console.log("New Month Directory Created: ", month)
-										month_directory_exist(machine_name,req,res)
+										month_directory_exist(req,res)
 									}
 								})
 						} else {
@@ -35,13 +39,13 @@ exports.posting_machine_data = function (req,res,next){
 							internal_server_error(res)
 						}
 					} else {
-						month_directory_exist(machine_name,req,res)
+						month_directory_exist(req,res)
 					}
 	})
 	
 }
 
-function month_directory_exist(machine_name,req,res){
+function month_directory_exist(req,res){
 	
 	
 				fs.stat(join("data",month,date.toString()),function(err,stats){
@@ -54,20 +58,20 @@ function month_directory_exist(machine_name,req,res){
 										internal_server_error(res)
 									} else {
 										console.log("New Date Directory Created: ", date)
-										date_directory_exist(machine_name,req,res)
+										date_directory_exist(req,res)
 									}
 							})
 						}else {
 							console.log("Internal server Error")
 						internal_server_error(res) }
 					} else{
-						date_directory_exist(machine_name,req,res)
+						date_directory_exist(req,res)
 					}
 				})
 }
 
-function date_directory_exist(machine_name,req,res){
-				fs.writeFile(join("data",month,date.toString(),machine_name + '.txt'),JSON.stringify(req.body),function(err){
+function date_directory_exist(req,res){
+				fs.writeFile(join("data",month,date.toString(),req.body.machine_name + '.txt'),JSON.stringify(req.body),function(err){
 					if(err) throw err
 				})
 				res.render('server_issue',{ message: "You will be redirected back to HOME in 5 seconds", req_image: "images/done.png"})

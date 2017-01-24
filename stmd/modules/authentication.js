@@ -1,4 +1,4 @@
-
+var fs = require('fs')
 var machine_id = ['CSM924','DVO8081','DVO8103','T-EXP3969','UNI8291','UNI8268','BCM','BCM','DGS367','DGS402','DGS433','BRM12','BRM-R-31','FRM1892','UTV006','UTV054','ATRT']
 var machine_password = ['stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm','stdm']
 
@@ -7,10 +7,11 @@ var admin_password = "admin"
 
 var	months = ['January','February','March','April','May','June','July','August','September','October','November','December']
 
-var date = new Date()
-var Hours = date.getHours()
-var Minutes = date.getMinutes()
-var month = months[date.getMonth()]
+var d = new Date()
+var date = d.getDate()
+var Hours = d.getHours()
+var Minutes = d.getMinutes()
+var month = months[d.getMonth()]
 
 exports.authenticating = function (req,res,next){
 			user_name = req.body.userName
@@ -58,4 +59,16 @@ exports.machine_name = function(x){
 
 function admin_home(req,res){
 			res.render('admin_home',{option2:"Weekly Report",option1:"Today's Report" ,option3:"Monthly Rep."})
+}
+
+function super_admin_home(req,res){
+		fs.stat(require('path').join("data",month,date.toString(),'super_admin.txt'),function(err,stats){
+			if(err){
+				if(err.code=="ENOENT"){
+					res.render('super_admin_home',{data:2})
+				}
+			} else {
+				res.render('super_admin_home',{ data:5 })
+			}
+		})
 }

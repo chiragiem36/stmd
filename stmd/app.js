@@ -13,7 +13,9 @@ var posting_machine_data = require('./modules/machine_data').posting_machine_dat
 var writing_machine_data = require('./modules/machine_data').writing_machine_data
 
 var daily_data = require('./modules/admin_panel').daily
-var edit = require('./modules/admin_panel').edit
+var edit_page = require('./modules/admin_panel').edit_page
+var post_edit = require('./modules/admin_panel').post_edit
+var forward_to_superadmin = require('./modules/admin_panel').forward_to_superadmin
 
 var date = new Date()
 var Hours = date.getHours()
@@ -35,14 +37,16 @@ app.post('/user',BP.urlencoded({extended: true}),authenticating,sending_form)
 app.post('/machine_data',BP.urlencoded({extended: true}),posting_machine_data)
 
 app.post('/daily',daily_data)
-app.post('/edit/:machine_name', edit)
+app.post('/edit/:machine_name', edit_page)
 
 app.post('/weekly',function(req,res){
 	console.log(machine_id)
 	res.render('machines_list',{ 'machine_names' : machine_id})
 })
 
-app.get('*',function(req, res) {
+app.post('/forward', forward_to_superadmin)
+
+app.all('*',function(req, res) {
     res.render("server_issue",{message: "404 ..... Resource not found", req_image:"images/resource_not_found.jpg"})
 });
 

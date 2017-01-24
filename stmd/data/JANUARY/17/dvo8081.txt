@@ -1,1 +1,0 @@
-{"date":"19","line":"MIDDLE","section_starting":"scsa","section_ending":"bbva","starting_hour":"6","starting_minute":"15","ending_hour":"15","ending_minute":"51","from_pole":"861/11","to_pole":"861/100","from":"861/12","to":"861/20","length":"1","failure":"yes","remark":"","submit_time":"2017-01-17T05:39:30.476Z","month_name":"JANUARY","machine_name":"dvo8081"}

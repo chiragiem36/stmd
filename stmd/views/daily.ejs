@@ -21,7 +21,8 @@
 					border-width: 1px;
 					border-color: white;
 					margin-right: 10px;
-						}
+			}
+			
 			
 		</style>
 	</head>
@@ -31,6 +32,7 @@
 							<tr style="background-color:rgba(153,234,232,.8)">
 									<th class="text-center">Machine Names</th>
 									<th class="text-center">Working Section</th>
+									<th class="text-center">Line</th>
 									<th class="text-center">Starting Time</th>
 									<th class="text-center">Ending Time</th>
 									<th class="text-center">From - To( Pole )</th>
@@ -52,6 +54,9 @@
 									<%= machine.section_starting %>-<%= machine.section_ending %>
 								</td>
 								<td>
+									<%= machine.line%>
+								</td>
+								<td>
 									<%= machine.starting_hour %>:<%= machine.starting_minute %>
 								</td>
 								<td>
@@ -69,8 +74,14 @@
 							</tr>
 							<% }) %>
 							
+							
 					</table>
 				
+			</div>
+			<div id="footer">
+				<form action="/forward" method="post" class="row">
+					<input type="submit" value="submit" id="submit" class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
+				</form>
 			</div>
 	</body>
 </html>

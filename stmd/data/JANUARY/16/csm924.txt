@@ -1,1 +1,0 @@
-{"date":"0","line":"UP","section_starting":"","section_ending":"","starting_hour":"0","starting_minute":"0","ending_hour":"0","ending_minute":"0","from_pole":"","to_pole":"","from":"","to":"","length":"","failure":"no","remark":"","submit_time":"2017-01-16T10:34:47.125Z","month_name":"JANUARY","machine_name":"csm924"}

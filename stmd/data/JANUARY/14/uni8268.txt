@@ -1,1 +1,0 @@
-{"date":"16","section_starting":"bpl","section_ending":"bina","starting_hour":"16","starting_minute":"7","ending_hour":"7","ending_minute":"5","from_pole":"221","to_pole":"2121","from":"861/12","to":"861/20","length":"1","failure":"yes","remark":"No failure","submit_time":"2017-01-14T14:08:08.086Z"}
