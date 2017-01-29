@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<title>TM dept., BPL div.</title>
+		<link href='css/bootstrap.css' type='text/css' rel='stylesheet'>
+		<style type='text/css' rel='stylesheet'>
+
+			* {
+				font-family: consolas;
+			}
+
+			#navbar {
+				width: 100%;
+				position:fixed;
+				height: 50px;
+				background-color: rgb(40,204,154);
+				border-color: black;
+				box-shadow: 0px 2px 15px rgb(253,243,5);
+				z-index: 1;
+			}
+
+
+			#company {
+				margin-top: 14px;
+				border-radius: 5px;
+			}
+
+			form {
+
+				position: relative;
+				top: 50px;
+			}
+
+			#login {
+				border-radius: 5px;
+				border-color: red;
+				border-size: 2px;
+			}
+
+			input {
+				border-radius: 5px;
+			}
+
+			input:hover {
+				border-color: rgb(40,204,130);
+			}
+
+			#submit {
+				background-color: rgb(40,204,130);
+				padding-left: 20px;
+				padding-right: 20px;
+				box-shadow: 0px 2px 3px rgb(143,129,126);
+				color: white;
+				border: none;
+			}
+
+			#submit:hover {
+				background-color: rgb(40,204,150);
+				color: black;
+				box-shadow: 0px 3px 10px grey;
+			}
+
+			a:hover {
+				text-decoration: none;
+			}
+
+		</style>
+	</head>
+	<body>
+
+
+		<div class='container-fluid'>
+
+		<!-- new row, for name of the Home Company -->
+				<div class='row' id='navbar'>
+
+					<h3 class='col-lg-4 col-xs-12' id='company'><b>STMD</b> <small class='text-danger'>Machine Login</small></h3>
+
+				</div>
+
+			<form action='/user' method='POST'>
+
+
+				<!-- new row, for name of the form controls-->
+				<br>
+
+				<div class='row'>
+
+					<div class='col-xs-12 col-md-12 text-center' style="color:red"><%= message %></div><br>
+				</div>
+
+				<div class='row'>
+
+					<div class='col-xs-12 col-md-4 col-md-offset-4' id='login'><br>
+						<p class='text-center'><kbd>Enter Machine Username:</kbd> <input type='text' name='userName' id='username'></p>
+						<p class='text-center'><kbd>Enter Machine Password:</kbd> <input type='password' name='passWord' id='password'></p>
+            <p class='text-center'><kbd>Re-nter Machine Password:</kbd> <input type='password' name='passWord' id='password'></p>
+						<p class='text-center'><input type='submit' value='submit' id='submit'></p>
+					</div>
+
+					</div>
+				</div>
+
+			</form>
+
+		</div>
+		</body>
+</html>

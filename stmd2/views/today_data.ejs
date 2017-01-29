@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<title>Admin</title>
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+		<style type="text/css" rel="stylesheet">
+			*{
+				font-family: monospace;
+			}
+
+			.machine_name {
+				background-color: rgba(124,241,131,.7);
+			}
+
+			td {
+				background-color: rgba(124,241,131,.3)
+			}
+
+			input {
+					background-color: rgb(40,204,154);
+					border-radius: 2.5px;
+					border-width: 1px;
+					border-color: white;
+					margin-right: 10px;
+			}
+
+
+		</style>
+	</head>
+	<body>
+			<div class="container-fluid">
+					<table class="table table-striped text-center">
+							<tr style="background-color:rgba(153,234,232,.8)">
+									<th class="text-center">Machine Names</th>
+									<th class="text-center">Working Section</th>
+									<th class="text-center">Line</th>
+									<th class="text-center">Starting Time</th>
+									<th class="text-center">Ending Time</th>
+									<th class="text-center">From - To( Pole )</th>
+									<th class="text-center">From - To</th>
+									<th class="text-center">Length(in KM)</th>
+									<th class="text-center">Failure</th>
+									<th class="text-center">Remark</th>
+							</tr>
+
+							<% machines.forEach(function(machine){ %>
+								<tr>
+								<td class="machine_name">
+									<form action="/edit/<%= machine.machine_name %>" method ="post">
+										<input type="submit" value="<%= machine.machine_name %>" >
+									</form>
+
+								</td>
+								<td>
+									<%= machine.section_starting %>-<%= machine.section_ending %>
+								</td>
+								<td>
+									<%= machine.line%>
+								</td>
+								<td>
+									<%= machine.starting_hour %>:<%= machine.starting_minute %>
+								</td>
+								<td>
+									<%= machine.ending_hour %>:<%= machine.ending_minute %>
+								</td>
+								<td>
+									<%= machine.from_pole %>-<%= machine.to_pole %>
+								</td>
+								<td>
+									<%= machine.from %>-<%= machine.from %>
+								</td>
+								<td> <%= machine.length %> </td>
+								<td> <%= machine.failure %> </td>
+								<td> <%= machine.remark %> </td>
+							</tr>
+							<% }) %>
+
+
+					</table>
+
+			</div>
+			<div id="footer">
+				<form action="/admin/forward" method="post" class="row">
+					<input type="submit" value="submit" id="submit" class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
+				</form>
+			</div>
+	</body>
+</html>
