@@ -2,6 +2,13 @@ var router = require('express').Router()
 var mongoClient = require('mongodb').MongoClient
 var cookie=require('cookie')
 
+var months = ['January','February','March','April','May','June']
+
+var d = new Date()
+var year = d.getYear().toString()
+var date = d.getDate().toString()
+var month = months[d.getMonth()].toLowerCase()
+
 router.post('/',function(req,res){
   console.log(req.body)
   var user_name = req.body.userName
@@ -16,7 +23,7 @@ router.post('/',function(req,res){
           case 'machine':
           if(item.password == pass_word){
             res.setHeader('Set-Cookie',cookie.serialize('name',user_name),{httpOnly:true})
-            res.render('home',{title:user_name ,menus: [{name:"Today's Data",url:"/machine/todays_data"},{name:"History",url:"/machine/history"},{name:"Stats",url:"/machine/stats"}]})
+            res.render('home_machine',{name:user_name,'month_name': month})
             break
           } else {
             res.render('index',{message:"Invalid Login"})

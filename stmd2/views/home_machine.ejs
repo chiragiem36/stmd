@@ -1,0 +1,185 @@
+<html>
+	<head>
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+		<style>
+
+			body {
+				background-color:rgba(231,228,230,.5);
+			}
+
+			#navbar {
+				width: 100%;
+				position:fixed;
+				height: 50px;
+				background-color: rgba(96,157,232,1);
+				border-color: black;
+				box-shadow: 0px 2px 15px rgb();
+				z-index: 1;
+				box-shadow: 2px 1px 30px black;
+			}
+
+
+			#company {
+				margin-top: 14px;
+				border-radius: 5px;
+			}
+
+			a:hover {
+				cursor: pointer;
+			}
+
+			#form {
+				position: relative;
+				top: 90px;
+				border-radius: 3px;
+				border-radius:3px;
+				box-shadow: 1px 1px 5px grey;
+			}
+
+			#info {
+				position:relative;
+				top: 100px;
+				border-radius:3px;
+				box-shadow: 1px 1px 5px grey;
+				margin-bottom: 20px;
+			}
+
+
+			input, select, textarea {
+				border-radius: 5px;
+				border-width: 1px;
+				border-color: grey;
+				margin-right: 10px;
+			}
+		</style>
+
+		<script type="text/javascript">
+
+		</script>
+	</head>
+	<body>
+		<div class='container-fluid'>
+
+		<!-- new row, for name of the Home Company -->
+		<div class='row' id='navbar'>
+				<h3 class='col-lg-4 col-xs-12' id='company' style="color:white"><b>STMD</b> <small class='text-danger'></small></h3>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<form action="/machine/post_data" method="POST" class="col-xs-10 col-xs-offset-1 col-md-7 text-center" style="background-color:white" id="form">
+						<h2 class="text-center">Todays Report Submission Form</h2>
+						<hr>
+						<br>
+						<div class="row">
+							<div class="col-xs-12 col-md-3 col-md-offset-2 text-center">
+									<kbd>Date</kbd>
+							</div>
+							<input type="text" name="date" class="col-xs-3 col-xs-offset-3 col-md-1" maxlength="2"><div class="col-xs-3 col-md-1" id="month"><%= month_name %></div>
+						</div>
+						<br>
+						<div class="row">
+								<div class="col-xs-12 col-md-3 col-md-offset-2">
+											<kbd>Line</kbd>
+								</div>
+								<select name="line">
+									<option value="UP">UP</option>
+									<option value="DOWN">DOWN</option>
+									<option value="MIDDLE">MIDDLE</option>
+								</select>
+						</div>
+
+						<div class="row">
+							<h4 class="col-xs-12 col-md-12"><b>Section</b></h4>
+							<div class="col-xs-12 col-md-3 col-md-offset-2">
+									<kbd>Starting-Ending</kbd>
+							</div><input type="text" name="section_starting" class="col-xs-3 col-xs-offset-3 col-md-1" maxlength="4"><input type="text" name="section_ending" class="col-xs-3 col-md-1" maxlength="4">
+						</div>
+						<br>
+
+						<div class="row">
+							<div class="col-xs-12 col-md-3 col-md-offset-2">
+									<kbd>Starting Time</kbd>
+							</div>
+							<input type="text" name="starting_hour" class="col-xs-3 col-xs-offset-3 col-md-1" maxlength="2">
+							<input type="text" name="starting_minute" class="col-xs-3 col-md-1" maxlength="2">
+						</div>
+						<br>
+
+						<div class="row">
+							<div class="col-xs-12 col-md-3 col-md-offset-2">
+									<kbd>Ending Time</kbd>
+							</div>
+							<input type="text" name="ending_hour" class="col-xs-3 col-xs-offset-3 col-md-1" maxlength="2">
+							<input type="text" name="ending_minute" class="col-xs-3 col-md-1" maxlength="2">
+						</div>
+						<br>
+
+						<div class="row">
+							<h4 class="col-xs-12 col-md-12"><b>Progress</b></h4>
+							<div class="col-xs-12 col-md-3 col-md-offset-2">
+									<kbd>from-to ( pole )</kbd>
+							</div><input type="text" name="from_pole" class="col-xs-3 col-xs-offset-3 col-md-1" maxlength="7"><input type="text" name="to_pole" class="col-xs-3 col-md-1" maxlength="7">
+						</div>
+
+						<br>
+						<div class="row">
+							<div class="col-xs-12 col-md-3 col-md-offset-2">
+									<kbd>from - to</kbd>
+							</div><input type="text" name="from" class="col-xs-3 col-xs-offset-3 col-md-1" maxlength="7"><input type="text" name="to" class="col-xs-3 col-md-1" maxlength="7">
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-xs-12 col-md-3 col-md-offset-2">
+									<kbd>Length</kbd>
+							</div>
+							<input type="text" name="length" class="col-xs-3 col-xs-offset-3 col-md-1" maxlength="2"><div class="col-xs-2 col-md-1" style="color:orange">in KMs</div>
+						</div>
+						<br>
+						<div class="row">
+								<h4 class="col-xs-12 col-md-12"><b>Failure</b></h4>
+
+								<div class="col-xs-12 col-md-3 col-md-offset-2">
+											<kbd>Failure (if any)</kbd>
+								</div>
+								<select name="failure">
+									<option value="no">No</option>
+									<option value="yes">Yes</option>
+								</select>
+						</div>
+							<br>
+						<div class="row">
+								<div class="col-xs-12 col-md-3 col-md-offset-2">
+											<kbd>Remark??</kbd>
+						</div>
+						<input type="text" name="remark" class="col-xs-6 col-xs-offset-3 col-md-3">
+
+						</div>
+							<br>
+							<div class="row">
+											<input type="submit" value="submit" id="submit" class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
+							</div>
+							<br>
+				</form>
+
+				<div class="text-center col-xs-10 col-xs-offset-1 col-md-2 col-md-offset-1" style="background-color:white" id="info">
+					<h4>About</h4>
+					<img src="download.jpg" class="img-responsive img-rounded">
+					<h3></b>CSM924</b></h3>
+					<hr style="border-color:rgba(61,135,223,.9)">
+					<div class="row text-right">
+						<div class="col-xs-7" style="font-family:calibri">Current Status:</div><div class="col-xs-5"></div>
+						<div class="col-xs-7" style="font-family:calibri">Commisioned in:</div>
+						<div class="col-xs-7" style="font-family:calibri">Years of Service:</div>
+						<div class="col-xs-7" style="font-family:calibri">Yearly Quota:</div>
+						<div class="col-xs-7" style="font-family:calibri">Current Run:</div>
+					</div>
+				</div>
+				</div>
+		</div>
+
+
+
+	</body>
+</html>

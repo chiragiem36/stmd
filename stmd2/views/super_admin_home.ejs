@@ -5,23 +5,24 @@
 			* {
 				font-family: sans-serif;
 			}
-			
+
 			#navbar {
 				width: 100%;
 				position:fixed;
 				height: 50px;
-				background-color: rgb(40,204,154);
+				background-color: rgba(96,157,232,1);
 				border-color: black;
-				box-shadow: 0px 2px 15px rgb(253,243,5);
+				box-shadow: 0px 2px 15px rgb();
 				z-index: 1;
+				box-shadow: 2px 1px 30px black;
 			}
-			
-			
+
+
 			#company {
 				margin-top: 14px;
 				border-radius: 5px;
 			}
-			
+
 			.panel {
 				color: grey;
 				height: 40px;
@@ -34,18 +35,18 @@
 				border-size: 2px;
 				border-color: rgba(132,123,123,.5);
 			}
-			
+
 			.panel:hover {
 				border-color: rgb(40,204,154);
 				box-shadow: 0px 2px 10px grey;
 				color: black;
 			}
-			
+
 			a:hover {
 				cursor: pointer;
 			}
 		</style>
-		
+
 		<script type="text/javascript">
 			window.onload = function(){
 				if(<%=data%> > 3){
@@ -58,19 +59,19 @@
 	</head>
 	<body>
 		<div class='container-fluid'>
-		
+
 		<!-- new row, for name of the Home Company -->
 				<div class='row' id='navbar'>
-					
+
 					<h3 class='col-lg-4 col-xs-12' id='company'><b>STMD</b> <small class='text-danger'>Super Admin Panel</small></h3>
-					
+
 				</div>
-				
+
 				<div id="content">
-					
+
 				</div>
-				
+
 		</div>
-		
+
 	</body>
 </html>
