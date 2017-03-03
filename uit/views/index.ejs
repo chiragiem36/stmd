@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<title>TM dept., BPL div.</title>
+		<link href='css/bootstrap.css' type='text/css' rel='stylesheet'>
+		<style type='text/css' rel='stylesheet'>
+
+		@font-face {
+			font-family: Poppins;
+			src: url(fonts/Poppins-Regular.ttf);
+		}
+
+		* {
+			font-family: Poppins;
+		}
+
+			body {
+				background-color:rgba(231,228,230,.3);
+			}
+
+			#navbar {
+				width: 100%;
+				position:fixed;
+				height: 50px;
+				background-color: rgba(96,157,232,1);
+				border-color: black;
+				box-shadow: 0px 2px 15px rgb();
+				z-index: 1;
+				box-shadow: 2px 1px 30px black;
+			}
+
+
+			#company {
+				color: white;
+				margin-top: 14px;
+				border-radius: 5px;
+			}
+
+			.form {
+
+				position: relative;
+				top: 50px;
+			}
+
+			#login {
+				border-radius: 5px;
+				border-color: red;
+				border-size: 2px;
+			}
+
+			input {
+				border-radius: 5px;
+			}
+
+			input:hover {
+				border-color: rgb(40,204,130);
+			}
+
+			#submit {
+				background-color: rgb(40,204,130);
+				padding-left: 20px;
+				padding-right: 20px;
+				box-shadow: 0px 2px 3px rgb(143,129,126);
+				color: white;
+				border: none;
+			}
+
+			#submit:hover {
+				background-color: rgb(40,204,150);
+				color: black;
+				box-shadow: 0px 3px 10px grey;
+			}
+
+			a:hover {
+				text-decoration: none;
+			}
+
+		</style>
+
+		<script>
+			function homeRequest(){
+				var username = document.getElementById("username").value;
+				var password = document.getElementById("password").value;
+				console.log(username);
+				var loginRequest = new XMLHttpRequest();
+				loginRequest.onreadystatechange = renderMessage;
+				loginRequest.open('POST','http://localhost:3000/login',true);
+				loginRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				loginRequest.send("username=" + username + "&password=" + password);
+
+				function renderMessage(){
+					if(loginRequest.status === 200 && loginRequest.readyState === XMLHttpRequest.DONE){
+						console.log(loginRequest.responseText);
+						document.getElementById("messageFolder").innerHTML = loginRequest.responseText;
+					}
+				}
+			}
+
+		</script>
+	</head>
+	<body>
+		<!-- new row, for name of the Home Company -->
+				<div class="container-fluid">
+					<div class='row' id='navbar'>
+
+						<h3 class='col-lg-4 col-xs-12' id='company'><b>Attendance</b> <small class='text-danger'>@uit</small></h3>
+
+					</div>
+				</div>
+
+		<div class='container-fluid'>
+			<div class="form">
+				<br>
+				<div class='row'>
+					<div class='col-xs-12 col-md-12 text-center' style="color:red" id="messageFolder"></div><br>
+				</div>
+				<div class='row'>
+					<div class='col-xs-12 col-md-4 col-md-offset-4' id='login'><br>
+						<p class='text-center'>username : <input type='text' name='username' id='username'></p>
+						<p class='text-center'>password : <input type='password' name='password' id='password'></p>
+						<p class='text-center'><button onClick="homeRequest()" id='submit'>Submit</button></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</div>
+		</body>
+</html>
